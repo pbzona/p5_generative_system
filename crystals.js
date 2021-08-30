@@ -15,7 +15,25 @@ function setup() {
 }
 
 function draw() {
-  testLines();
+  // testLines();
+  outlineShape();
+}
+
+function outlineShape() {
+  const strokeColor = getRandomFromPalette();
+  const weight = randomSelectTwo() ? 1 : 3;
+  
+  stroke(strokeColor);
+  strokeWeight(weight);
+
+  push();
+    translate(width/2, height/2);
+    if (randomSelectTwo()) {
+      ellipse(0, 0, CRYSTAL_SIZE, CRYSTAL_SIZE);
+    } else {
+      hexagon(0, 0, CRYSTAL_SIZE / 2);
+    }
+  pop();
 }
 
 function testLines() {
