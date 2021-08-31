@@ -56,17 +56,3 @@ function testLines() {
     }
   pop();
 }
-
-function randomSelectTwo() {
-  const r = random(1);
-  if (r > 0.5) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function getRandomFromPalette() {
-  const r = floor(random(0, PALETTE.length));
-  return PALETTE[r];
-}

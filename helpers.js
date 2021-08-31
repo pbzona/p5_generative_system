@@ -13,3 +13,17 @@ function pointOnCircle (posX, posY, radius, angle) {
   const y = posY + radius * sin(angle)
   return createVector(x, y)
 }
+
+function randomSelectTwo() {
+  const r = random(1);
+  if (r > 0.5) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function getRandomFromPalette() {
+  const r = floor(random(0, PALETTE.length));
+  return PALETTE[r];
+}
