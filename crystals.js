@@ -15,9 +15,24 @@ function setup() {
 }
 
 function draw() {
-  outlineShape();
-  circles();
-  simpleLines();
+  // outlineShape();
+  // circles();
+  // simpleLines();
+
+  let picker = random(1);
+  if (picker > 0.3) {
+    outlineShape();
+  }
+
+  picker = random(1);
+  if (picker > 0.2) {
+    simpleLines();
+  }
+
+  picker = random(1);
+  if (picker > 0.5) {
+    circles();
+  }
 }
 
 function circles() {
