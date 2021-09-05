@@ -37,7 +37,7 @@ function draw() {
     layers.push(new DottedLines());
   }
 
-  s = new RingOfShapes();
+  s = new SteppedHexagons();
   s.render();
 
   // layers.forEach(layer => {

@@ -166,3 +166,26 @@ class RingOfShapes extends Layer {
     pop();
   }
 }
+
+class SteppedHexagons extends Layer {                 
+  constructor () {
+    super();
+    this.numSteps = randomSelectTwo() ? this.stepsOut : this.stepsOut * 1.25;
+    this.centerOffset = (CRYSTAL_SIZE / 2) * 0.15;
+    this.singleStep = ((CRYSTAL_SIZE / 2) - this.centerOffset) / this.numSteps;
+    this.weight = randomSelectTwo() ? this.thinStroke : this.thickStroke;
+  }
+
+  render () {
+    stroke(this.layerColor);
+    noFill();
+    strokeWeight(this.weight);
+    push();
+      translate(width / 2, height / 2);
+      rotate(this.angle / 2) ;
+      for (let i = 1; i < this.numSteps + 1; i++) {
+        hexagon(0, 0, this.centerOffset + (i * this.singleStep));
+      }
+    pop();
+  }
+}
