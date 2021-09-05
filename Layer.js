@@ -105,3 +105,25 @@ class DottedLines extends Layer {
     pop();
   }
 }
+
+class CenteredShape extends Layer {                     
+  constructor () {
+    super();
+    this.randomShape = random(1);
+    this.shapeSize = floor(random(this.stepsOut / 4, this.stepsOut - 1)) * this.singleStep;
+  }
+
+  render () {
+    fill(this.layerColor);
+    noStroke();
+    push();
+    translate(width / 2, height / 2);
+    if (this.randomShape < 0.6) {
+      ellipse(0, 0, this.shapeSize * 2, this.shapeSize * 2);
+    } else if (this.randomShape >= 0.6) {;
+      rotate(this.angle / 2);
+      hexagon(0, 0, this.shapeSize);
+    }
+    pop();
+  }
+}

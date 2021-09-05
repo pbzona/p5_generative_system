@@ -37,7 +37,10 @@ function draw() {
     layers.push(new DottedLines());
   }
 
-  layers.forEach(layer => {
-    layer.render();
-  })
+  s = new CenteredShape();
+  s.render();
+
+  // layers.forEach(layer => {
+  //   layer.render();
+  // });
 }
