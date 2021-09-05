@@ -117,13 +117,13 @@ class CenteredShape extends Layer {
     fill(this.layerColor);
     noStroke();
     push();
-    translate(width / 2, height / 2);
-    if (this.randomShape < 0.6) {
-      ellipse(0, 0, this.shapeSize * 2, this.shapeSize * 2);
-    } else if (this.randomShape >= 0.6) {;
-      rotate(this.angle / 2);
-      hexagon(0, 0, this.shapeSize);
-    }
+      translate(width / 2, height / 2);
+      if (this.randomShape < 0.6) {
+        ellipse(0, 0, this.shapeSize * 2, this.shapeSize * 2);
+      } else if (this.randomShape >= 0.6) {;
+        rotate(this.angle / 2);
+        hexagon(0, 0, this.shapeSize);
+      }
     pop();
   }
 }
