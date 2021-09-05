@@ -7,7 +7,7 @@ class Layer {
     this.singleStep = (CRYSTAL_SIZE / 2) / this.stepsOut;
     this.thinStroke = 1;
     this.thickStroke = 3;
-    this.strokeColor = getRandomFromPalette();
+    this.layerColor = getRandomFromPalette();
   }
 }
 
@@ -19,7 +19,7 @@ class Circles extends Layer {
   }
 
   render() {
-    stroke(this.strokeColor);
+    stroke(this.layerColor);
     strokeWeight(1);
     noFill();
 
@@ -48,7 +48,7 @@ class SimpleLines extends Layer {
 
   render() {
     noFill();
-    stroke(this.strokeColor);
+    stroke(this.layerColor);
     strokeWeight(this.weight);
     push();
       translate(width/2, height/2);
@@ -67,7 +67,7 @@ class OutlineShape extends Layer {
   }
 
   render() {
-    stroke(this.strokeColor);
+    stroke(this.layerColor);
     strokeWeight(this.weight);
 
     push();
@@ -76,6 +76,31 @@ class OutlineShape extends Layer {
         ellipse(0, 0, CRYSTAL_SIZE, CRYSTAL_SIZE);
       } else {
         hexagon(0, 0, CRYSTAL_SIZE / 2);
+      }
+    pop();
+  }
+}
+
+class DottedLines extends Layer {
+  constructor() {
+    super();
+    this.numShapes = randomSelectTwo() ? this.sides : this.sides * 2;
+    this.angle = 360 / this.numShapes;
+    this.shapeSize = 3;
+    this.centerOffset = this.singleStep;
+  }
+
+  render() {
+    fill(this.layerColor);
+    noStroke();
+
+    push();
+      translate(width/2, height/2);
+      for (let i = 0; i < this.numShapes; i++) {
+        for (let x = this.centerOffset; x < CRYSTAL_SIZE / 2; x += this.singleStep) {
+          rect(x, 0, this.shapeSize, this.shapeSize);
+        }
+        rotate(this.angle);
       }
     pop();
   }

@@ -32,6 +32,11 @@ function draw() {
     layers.push(new Circles());
   }
 
+  picker = random(1);
+  if (picker > 0.4) {
+    layers.push(new DottedLines());
+  }
+
   layers.forEach(layer => {
     layer.render();
   })
