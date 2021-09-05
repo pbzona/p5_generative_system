@@ -127,3 +127,42 @@ class CenteredShape extends Layer {
     pop();
   }
 }
+
+class RingOfShapes extends Layer {                    
+  constructor () {
+    super();
+    this.steps = floor(random(1, this.stepsOut));
+    this.center = this.steps * this.singleStep;
+    this.randomShape = random(1);
+    this.direction = randomSelectTwo(); // used for triangle only
+    this.fillColor = randomSelectTwo() ? this.layerColor : color(0, 1);
+    this.weight = randomSelectTwo() ? this.thinStroke : this.thickStroke;
+
+    if (this.steps < this.stepsOut / 2) {
+      this.radius = floor(random(1, this.steps)) * this.singleStep;
+    } else if (this.steps > this.stepsOut / 2) {
+      this.radius = floor(random(1, this.stepsOut - this.steps)) * this.singleStep;
+    } else {
+      this.radius = floor(random(1, (this.stepsOut / 2) + 1)) * this.singleStep;
+    }
+  }
+
+  render () {
+    stroke(this.layerColor);
+    fill(this.fillColor);
+    strokeWeight(this.weight);
+    push();
+      translate(width / 2, height / 2);
+      for (let i = 0; i < this.numShapes; i++) {
+        if (this.randomShape < 0.33) {
+          ellipse(0, this.center, this.radius, this.radius);
+        } else if (this.randomShape >= 0.33 && this.randomShape < 0.66) {
+          rect(0, this.center, this.radius, this.radius);
+        } else if (this.randomShape >= 0.66) {
+          myTriangle(this.center, this.radius, this.direction);
+        }
+        rotate(this.angle);
+      }
+    pop();
+  }
+}

@@ -37,7 +37,7 @@ function draw() {
     layers.push(new DottedLines());
   }
 
-  s = new CenteredShape();
+  s = new RingOfShapes();
   s.render();
 
   // layers.forEach(layer => {
