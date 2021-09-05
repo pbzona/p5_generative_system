@@ -2,6 +2,8 @@ const CRYSTAL_SIZE = 500;
 const SIDES = 6;
 let PALETTE = [];
 
+const layers = [];
+
 function setup() {
   PALETTE = [
     color(255, 52, 154), // pink
@@ -15,32 +17,22 @@ function setup() {
 }
 
 function draw() {
-  let somethingWasDrawn = false;
-
   let picker = random(1);
-  let outline = new OutlineShape();
   if (picker > 0.3) {
-    outline.render();
-    somethingWasDrawn = true;
+    layers.push(new OutlineShape());
   }
 
   picker = random(1);
-  let simpleLines = new SimpleLines();
   if (picker > 0.2) {
-    simpleLines.render();
-    somethingWasDrawn = true;
+    layers.push(new SimpleLines());
   }
 
   picker = random(1);
-  let circles = new Circles();
   if (picker > 0.5) {
-    circles.render();
-    somethingWasDrawn = true;
+    layers.push(new Circles());
   }
 
-  if (!somethingWasDrawn) {
-    outline.render();
-    simpleLines.render();
-    cirlces.render();
-  }
+  layers.forEach(layer => {
+    layer.render();
+  })
 }
